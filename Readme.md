@@ -1,26 +1,30 @@
 Analytic Service Installation
-===========================
-This is a analytic Service API does the following:
+=============================
+Overview:
+----------
+**Input Endpoint** 
 
-Input Endpoint that will allow to save events in AS. Url pointing to this endpoint should accept
+that will allow to save events in AS. Url pointing to this endpoint should accept
 following arguments: eventNameand eventValue.
+
 For example:
-   http://url.to.service/?endpoint=input&eventName=bar&eventValue=foo
+
+   `http://url.to.service/?endpoint=input&eventName=bar&eventValue=foo`
 
 After receiving a request to Input Endpoint, Analytics Service should store event in database
 together with referrer url and date and time. Response of this endpoint should be transparent
 1x1 image that can be used in any way we want.
 
-Dashboard Endpoint
-This endpoint should provide analytics view of stored event as table and/or chart
+**Dashboard Endpoint**
+
+This endpoint should provide analytics view of stored event as table and/or chart 
 Dashboard should allow user to:
 
-● group events by name
-● group events by date
+- group events by name
+- group events by date
 
 That means that user should be able to see number of events grouped name and/or by date in a
 form of table or chart.
-
 
 Download
 --------
@@ -48,19 +52,23 @@ Configure && Run
 
 What's Now?
 ------------------
- - You can see in the Home page a url. you can open it in a new tab and start adding new events by changing the name and the value,
-   for example :
-      http://localhost/AnalyticsService/endpoint/input?eventName=bar&eventValue=foo
-      and you will get a success image as a response.
+ - You can see in the Home page a url. you can open it in a new tab and start adding new events by changing the name and the
+   value, for example :
+      - You will get a success image as a response or the following urla:
+         - `http://localhost/AnalyticsService/endpoint/input?eventName=bar&eventValue=foo`
+         - `http://localhost/AnalyticsService/endpoint/input?eventName=bar&eventValue=momo`
+         - `http://localhost/AnalyticsService/endpoint/input?eventName=lar&eventValue=toto`
+         
+      - and You will get an error image as a response
+         - `http://localhost/AnalyticsService/endpoint/input?eventName=bar&eventlue=foo`
+         
+      - **Note:** you can add authentication on this action so only a user with a right to access this can do the action
+         you have to assign the user this permission from Rights, and uncomment the hinted code in `Controllers/EndpointController/actionInput`
+ - user management :  
+  
+          add/update/delete/list all users in the system as admin
+          login/logout/change password/update as a user
 
-      http://localhost/AnalyticsService/endpoint/input?eventName=bar&eventlue=foo
-      and you will get an error image as a response.
-
-      Note: you can add authentication on this action so only a user with a right to access this can do the action
-      you have to assign the user this permission from Rights, and uncomment the hinted code in `Controllers/EndpointController/actionInput`
-
- - user management : add/update/delete/list all users in the system as admin
-                     login/logout/change password/update as a user
  - play with roles/permissions in Rights, you can handle every single task and operation in your system.
 
 
